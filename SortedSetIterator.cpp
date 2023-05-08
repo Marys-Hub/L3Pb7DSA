@@ -30,12 +30,14 @@ void SortedSetIterator::next() {
 TElem SortedSetIterator::getCurrent()
 {
     //TODO - Implementation
-    if (!valid())
+    if (valid())
     {
         return multime.elems[currentelem];
-    }else
+    }
+    else
+    {
         throw exception();
-
+    }
     return NULL_TELEM;
 }
 

@@ -9,6 +9,7 @@ SortedSet::SortedSet(Relation r) {
     elems = new TComp[cap];
     next = new int[cap];
     head = -1;
+    firstEmpty = 1;
 
     // Initialize next array
     for (int i = 0; i < cap - 1; i++)
@@ -16,7 +17,6 @@ SortedSet::SortedSet(Relation r) {
         next[i] = i + 1;
     }
     next[cap] = -1;
-    firstEmpty = 1;
 
 }
 
