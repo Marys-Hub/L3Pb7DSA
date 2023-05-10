@@ -9,14 +9,16 @@ SortedSet::SortedSet(Relation r) {
     elems = new TComp[cap];
     next = new int[cap];
     head = -1;
-    firstEmpty = 1;
+    //firstEmpty = 1;
+    firstEmpty = 0;
 
     // Initialize next array
     for (int i = 0; i < cap - 1; i++)
     {
         next[i] = i + 1;
     }
-    next[cap] = -1;
+    //next[cap] = -1;
+    next[cap-1] = -1;
 
 }
 
@@ -66,13 +68,27 @@ bool SortedSet::remove(TComp elem) {
     //TODO - Implementation
     // Find the position of the element in the sorted set
     int prev = -2;
+    //int prev = -1;
     int current = head;
     while (current != -1 && elems[current] != elem) {
         prev = current;
         current = next[current];
     }
 
-    // If the element doesn't exist in the sorted set, return false
+    /*if(current != -1){
+        if(current == head){
+            head = next[head];
+        }else{
+            next[prev] = next[current];
+        }
+        next[current] = firstEmpty;
+        firstEmpty = current;
+    }else{
+        //element does not exist
+        return false;
+    } */
+
+  // If the element doesn't exist in the sorted set, return false
     if (current == -1) {
         return false;
     }
